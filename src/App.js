@@ -1,12 +1,8 @@
 import React, {useState,useEffect} from 'react'
 
-import theme from "./components/ui/Theme";
 import { ThemeProvider } from "@material-ui/styles";
-import { Route, Router, Switch } from "react-router-dom";
-import Profile2 from "./components/profile2";
-import Header from './components/ui/Header'
+
 import Datatable from './Datatable'
-import FilterListIcon from '@material-ui/icons/FilterList';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,29 +10,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
-
-import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-import { Radio } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -97,8 +78,6 @@ function App() {
   const [q , setQ] = useState('')
   const [gender, setGender] = useState('')
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(true);
 
   const handleClick = () => {
@@ -117,22 +96,6 @@ function App() {
     //  console.log(data.)
   }, [])
 
-  const showGender = () => {
-    <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              value={q} onChange={(e) => setQ(e.target.value)}
-            />
-          </div>
-  }
 
   function search(rows) {
     return data.records && rows.filter(
@@ -141,9 +104,6 @@ function App() {
       row.Gender.toLowerCase().indexOf(gender) !== -1 
 
     )
-
-    
-
     
   }
 
@@ -197,7 +157,6 @@ function App() {
         <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
           <div className={classes.search}>
-            {/* <Radio value={gender} onClick={(e) => e.target.value}/> */}
             <InputBase value={gender} onChange={(e) => setGender(e.target.value)}/>
             </div>
           </ListItem>
